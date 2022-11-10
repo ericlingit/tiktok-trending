@@ -4,9 +4,8 @@ Scrape tiktok front page videos URLs.
 
 ## Website structure
 
-1. statically generated with content preloaded
-1. javascript calls content API to fetch more videos
-
+1. The initial load in is statically generated with some content preloaded, depending on your screen size.
+1. As you scroll further down, the embedded JavaScript calls Tiktok's content API to fetch more videos.
 
 Sample request:
 
@@ -29,7 +28,9 @@ Sec-GPC: 1
 TE: trailers
 ```
 
-Sample response (JSON, truncated. See `sample-response.json` for full response):
+Sample response (JSON, truncated. See `sample-response.json` for full response).
+
+Note that all content URLs (images and videos) in the response have a limited life time. They expire after some number of hours.
 
 ```json
 {

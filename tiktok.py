@@ -5,6 +5,16 @@ import requests
 
 
 @dataclass
+class AuthorStats:
+    diggCount: int
+    followerCount: int
+    followingCount: int
+    heart: int
+    heartCount: int
+    videoCount: int
+
+
+@dataclass
 class Author:
     avatarLarger: str
     avatarMedium: str
@@ -22,21 +32,12 @@ class Author:
     secUid: str
     secret: bool
     signature: str
+    stats: AuthorStats
     stitchSetting: int
     ttSeller: bool
     uniqueId: str
     url: str
     verified: bool
-
-
-@dataclass
-class AuthorStats:
-    diggCount: int
-    followerCount: int
-    followingCount: int
-    heart: int
-    heartCount: int
-    videoCount: int
 
 
 @dataclass
@@ -119,6 +120,46 @@ def get_new_posts() -> dict:
     return resp.json()
 
 
+def parse_post(item: dict) -> Tik:
+    # Author stats.
+    ax = item.get("authorStats", {})
+    author_stats = AuthorStats(**ax)
+
+    # Author.
+    a = item.get("author", {})
+    author = Author(
+        **a, url=f"https://www.tiktok.com/@{a.get('id', '')}", stats=author_stats
+    )
+
+    # Music.
+    mu = item.get("music", {})
+    music = Music(**mu)
+
+    # Stats.
+    st = item.get("stats", {})
+    stats = Stats(**st)
+
+    # Video.
+    v = item.get("video", {})
+    v.pop("bitrateInfo")
+    v.pop("shareCover")
+    v.pop("volumeInfo")
+    v.pop("zoomCover")
+    video = Video(**v)
+
+    return Tik(
+        author=author,
+        createTime=item.get("createTime", -1),
+        desc=item.get("desc", ""),
+        id=item.get("id", ""),
+        isAd=item.get("isAd", False),
+        music=music,
+        stats=stats,
+        video=video,
+        url=f"https://www.tiktok.com/@{author.id}/video/{video.id}",
+    )
+
+
 if __name__ == "__main__":
     # data: dict = get_new_posts()
     # with open("sample-response.json", "w") as fh:
@@ -127,44 +168,9 @@ if __name__ == "__main__":
     with open("sample-response.json") as fh:
         data: dict = json.load(fh)
 
-    i = data.get("itemList", [{}])[0]
-
-    # Author.
-    a = i.get("author", {})
-    author = Author(**a, url=f"https://www.tiktok.com/@{a.get('id', '')}")
-
-    # Author stats.
-    ax = i.get("authorStats", {})
-    author_stats = AuthorStats(**ax)
-
-    # Music.
-    mu = i.get("music", {})
-    music = Music(**mu)
-
-    # Stats.
-    st = i.get("stats", {})
-    stats = Stats(**st)
-
-    # Video.
-    v = i.get("video", {})
-    v.pop("bitrateInfo")
-    v.pop("shareCover")
-    v.pop("volumeInfo")
-    v.pop("zoomCover")
-    video = Video(**v)
-
-    item = Tik(
-        author=author,
-        createTime=i.get("createTime", -1),
-        desc=i.get("desc", ""),
-        id=i.get("id", ""),
-        isAd=i.get("isAd", False),
-        music=music,
-        stats=stats,
-        video=video,
-        url=f"https://www.tiktok.com/@{author.id}/video/{video.id}",
-    )
+    item = data.get("itemList", [{}])[0]
+    tik = parse_post(item)
 
     from pprint import pprint
 
-    pprint(asdict(item))
+    pprint(asdict(tik))

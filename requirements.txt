@@ -1,0 +1,7 @@
+# Linting.
+black
+mypy
+types-requests
+
+# Dependencies.
+requests

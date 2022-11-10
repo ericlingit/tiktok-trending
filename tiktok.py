@@ -117,6 +117,7 @@ request_params = {
 
 
 def get_new_posts() -> dict:
+    """Get a list of new posts from Tiktok."""
     url = "https://www.tiktok.com/api/recommend/item_list/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-US&browser_name=Mozilla&browser_online=true&browser_platform=Linux%20x86_64&browser_version=5.0%20%28X11%29&channel=tiktok_web&cookie_enabled=true&count=30&device_id=7163916748088903169&device_platform=web_pc&focus_state=false&from_page=fyp&history_len=5&is_fullscreen=false&is_page_visible=true&os=linux&priority_region=&referer=&region=TW&root_referer=https%3A%2F%2Fwww.google.com%2F&screen_height=1080&screen_width=1920&tz_name=Asia%2FTokyo&webcast_language=en&msToken=1dCRzRecIKwoXXt2XNqL659r22i24Rgw-bYYogQujt_fYsxRQDEvUBkmtztQsiWd_OSZUrBvA054t1YNdYSJJxeFtZKaEjDjFjIKMEyesmkprTD-8CLIdIU4TUjrVyPQlntww4jIoWIZ0g==&X-Bogus=DFSzsIVL-isANHNDS0CN4aL1Xb7j&_signature=_02B4Z6wo00001p5YTDQAAIDDDHa3p8mTTUqeWUiAAMUJc3"
     resp = requests.get(url, request_params)
     resp.raise_for_status()
@@ -124,6 +125,7 @@ def get_new_posts() -> dict:
 
 
 def parse_post(item: dict) -> Tik:
+    """Parse one `item` and return a Tik object."""
     # Author stats.
     ax = item.get("authorStats", {})
     author_stats = AuthorStats(**ax)
@@ -164,10 +166,10 @@ def parse_post(item: dict) -> Tik:
 
 
 def download_video(tik: Tik, out_dir: Path, filename: str, save_metadata: bool) -> None:
-    """Download the video in `tik` to `filename` in `out_dir`. Do not include
-    file extension (like .mp4) in `filename`. The extension will be added for
-    you. If `save_metadata` is True, a JSON file will be saved alongside the
-    video.
+    """Download the video in `tik`, and it save as `filename` in `out_dir`.
+    File extension (like .mp4) will be automatically added to `filename` for you.
+    If `save_metadata` is True, `tik` will be serialized as a JSON file and
+    saved alongside the video.
     """
     resp = requests.get(tik.video.downloadAddr, request_params, stream=True)
     resp.raise_for_status()

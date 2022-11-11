@@ -133,6 +133,8 @@ def parse_item(item: dict) -> Tik:
 
     # Author.
     a = item.get("author", {})
+    if "roomId" in a:
+        a.pop("roomId")
     author = Author(
         **a, url=f"https://www.tiktok.com/@{a.get('id', '')}", stats=author_stats
     )

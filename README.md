@@ -4,7 +4,7 @@ Scrape tiktok front page videos URLs.
 
 ## Website structure
 
-1. The initial load in is statically generated with some content preloaded, depending on your screen size.
+1. The initial load-in is statically generated with some content preloaded, depending on your screen size.
 1. As you scroll further down, the embedded JavaScript calls Tiktok's content API to fetch more videos.
 
 Sample request:

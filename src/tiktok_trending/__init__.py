@@ -165,6 +165,11 @@ def parse_item(item: dict) -> Tik:
     )
 
 
+def parse_response(response_json: dict) -> List[Tik]:
+    items = response_json.get("itemList", {})
+    return [parse_item(item) for item in items]
+
+
 def download_video(tik: Tik, out_dir: Path, filename: str, save_metadata: bool) -> None:
     """Download the video in `tik`, and save it as `filename` in `out_dir`.
     File extension (like .mp4) will be automatically added for you.

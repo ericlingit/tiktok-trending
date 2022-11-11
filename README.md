@@ -32,6 +32,33 @@ See `test/response.json` for a full sample response.
 
 Note that all content URLs (images and videos) in the response have a limited life time. They expire after some number of hours.
 
+## tiktok-trending usage guide
+
+Install
+
+```
+pip install tiktok-trending
+```
+
+Scrape and download
+
+```python
+from pathlib import Path
+
+from tiktok_trending import download_video, get_new_posts, parse_response
+
+resp = get_new_posts()
+posts = parse_response(resp)
+for p in posts:
+    vid_name = f"{p.author.uniqueId}_{p.video.id}"
+    print(vid_name)
+    download_video(
+        tik=p,
+        out_dir=Path("."),
+        filename=vid_name,
+        save_metadata=True,
+    )
+```
 
 ## Develop
 

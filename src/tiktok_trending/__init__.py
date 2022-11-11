@@ -1,6 +1,7 @@
 import json
 from dataclasses import dataclass, asdict
 from pathlib import Path
+from typing import List
 
 import requests
 
@@ -197,8 +198,7 @@ if __name__ == "__main__":
     with open("sample-response.json") as fh:
         data: dict = json.load(fh)
 
-    item = data.get("itemList", [{}])[0]
-    tik = parse_item(item)
+    tik = parse_response(data)[0]
 
     download_video(
         tik=tik,

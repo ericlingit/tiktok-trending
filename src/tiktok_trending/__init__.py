@@ -188,21 +188,3 @@ def download_video(tik: Tik, out_dir: Path, filename: str, save_metadata: bool) 
     if save_metadata:
         with (out_dir / (filename + ".json")).open("w") as fh:
             json.dump(asdict(tik), fh, ensure_ascii=False, indent=4)
-
-
-if __name__ == "__main__":
-    # data: dict = get_new_posts()
-    # with open("sample-response.json", "w") as fh:
-    #     json.dump(data, fh, ensure_ascii=False, indent=4)
-
-    with open("sample-response.json") as fh:
-        data: dict = json.load(fh)
-
-    tik = parse_response(data)[0]
-
-    download_video(
-        tik=tik,
-        out_dir=Path("."),
-        filename=f"{tik.author.id}_{tik.video.id}",
-        save_metadata=True,
-    )

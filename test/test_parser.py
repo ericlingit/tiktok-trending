@@ -1,14 +1,14 @@
 import json
 
-from tiktok_trending import parse_post
+from tiktok_trending import parse_item
 
 
 def test_parse_post():
     with open("test/response.json") as fh:
-        data = json.load(fh)
+        data: dict = json.load(fh)
 
     item = data.get("itemList", [{}])[0]
-    post = parse_post(item)
+    post = parse_item(item)
 
     assert post.author.id == "6628475227129610242"
     assert post.video.id == "7158770362770099483"

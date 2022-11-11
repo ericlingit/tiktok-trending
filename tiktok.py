@@ -166,9 +166,9 @@ def parse_post(item: dict) -> Tik:
 
 
 def download_video(tik: Tik, out_dir: Path, filename: str, save_metadata: bool) -> None:
-    """Download the video in `tik`, and it save as `filename` in `out_dir`.
-    File extension (like .mp4) will be automatically added to `filename` for you.
-    If `save_metadata` is True, `tik` will be serialized as a JSON file and
+    """Download the video in `tik`, and save it as `filename` in `out_dir`.
+    File extension (like .mp4) will be automatically added for you.
+    If `save_metadata` is True, `tik` will be serialized to a JSON file and
     saved alongside the video.
     """
     resp = requests.get(tik.video.downloadAddr, request_params, stream=True)
@@ -176,7 +176,7 @@ def download_video(tik: Tik, out_dir: Path, filename: str, save_metadata: bool) 
 
     fname = f"{filename}.{tik.video.format}"
     with (out_dir / fname).open("wb") as fh:
-        for chunk in resp.iter_content(2**14):
+        for chunk in resp.iter_content(2**14):  # Read 16 KibiBytes at a time.
             fh.write(chunk)
 
     if save_metadata:

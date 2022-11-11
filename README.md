@@ -28,161 +28,22 @@ Sec-GPC: 1
 TE: trailers
 ```
 
-Sample response (JSON, truncated. See `sample-response.json` for full response).
+See `test/response.json` for a full sample response.
 
 Note that all content URLs (images and videos) in the response have a limited life time. They expire after some number of hours.
 
-```json
-{
-    "extra": {
-        "fatal_item_ids": [],
-        "logid": "2022110908402001024501106913087F41",
-        "now": 1667983221000
-    },
-    "hasMore": true,
-    "itemList": [ // 26 items in total
-        {
-            "adAuthorization": false,
-            "adLabelVersion": 0,
-            "author": {
-                "avatarLarger": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/4b15546d4ae3567a00596a5c8cbdf92d~c5_1080x1080.jpeg?x-expires=1668153600\u0026x-signature=4g224Pf4sHp1I82mb0911Jj84ew%3D",
-                "avatarMedium": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/4b15546d4ae3567a00596a5c8cbdf92d~c5_720x720.jpeg?x-expires=1668153600\u0026x-signature=OLI7yFDprVLfFeNrM41ysbSrx4w%3D",
-                "avatarThumb": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/4b15546d4ae3567a00596a5c8cbdf92d~c5_100x100.jpeg?x-expires=1668153600\u0026x-signature=hP2plJ4a2yiWNJDaprskN9qvEyk%3D",
-                "commentSetting": 0,
-                "downloadSetting": 0,
-                "duetSetting": 1,
-                "ftc": false,
-                "id": "62735666087",
-                "isADVirtual": false,
-                "nickname": "𝑳𝒂𝒍𝒂",
-                "openFavorite": false,
-                "privateAccount": false,
-                "relation": 0,
-                "secUid": "MS4wLjABAAAAT7vXNpQ88EBENnzPiUbCvQhACymPVlNaPUepCW89xXY",
-                "secret": false,
-                "signature": "Ins:lala._.0412 \nYoutube: 菈菈Lala\n2004.4.12（18y)",
-                "stitchSetting": 1,
-                "ttSeller": false,
-                "uniqueId": "lala._.0412",
-                "verified": true
-            },
-            "authorStats": {
-                "diggCount": 15400,
-                "followerCount": 829000,
-                "followingCount": 24,
-                "heart": 31500000,
-                "heartCount": 31500000,
-                "videoCount": 317
-            },
-            "createTime": 1667019452,
-            "desc": "末班車還來得及嗎🥹",
-            "digged": false,
-            "duetDisplay": 0,
-            "duetEnabled": false,
-            "duetInfo": {
-                "duetFromId": "0"
-            },
-            "effectStickers": [
-                {
-                    "ID": "1805988",
-                    "name": "細閃果凍妝",
-                    "stickerStats": {
-                        "useCount": 0
-                    }
-                }
-            ],
-            "forFriend": false,
-            "id": "7159794001544056091",
-            "isAd": false,
-            "itemCommentStatus": 0,
-            "itemMute": false,
-            "music": {
-                "album": "",
-                "authorName": "沙發馬鈴薯¹⁴",
-                "coverLarge": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ddbaebe7cb7a9c18baa66f7e0f410d16~c5_1080x1080.jpeg?x-expires=1668153600\u0026x-signature=cF23qzlMGiTG8vmvwvaey5JAdm4%3D",
-                "coverMedium": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ddbaebe7cb7a9c18baa66f7e0f410d16~c5_720x720.jpeg?x-expires=1668153600\u0026x-signature=Xltee6s%2FwoZtk7jPeevKkbcjqqU%3D",
-                "coverThumb": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ddbaebe7cb7a9c18baa66f7e0f410d16~c5_100x100.jpeg?x-expires=1668153600\u0026x-signature=NCmr9f%2BVyTguu6Tb9r6VyXyXokk%3D",
-                "duration": 13,
-                "id": "7152061788027112218",
-                "original": true,
-                "playUrl": "https://sf16-ies-music.tiktokcdn.com/obj/ies-music-aiso/7152068372321078042.mp3",
-                "title": "风夜行 DJ版"
-            },
-            "officalItem": false,
-            "originalItem": false,
-            "privateItem": false,
-            "secret": false,
-            "shareEnabled": true,
-            "showNotPass": false,
-            "stats": {
-                "commentCount": 406,
-                "diggCount": 134800,
-                "playCount": 961400,
-                "shareCount": 873
-            },
-            "stitchDisplay": 0,
-            "stitchEnabled": true,
-            "video": {
-                "bitrate": 2114595,
-                "bitrateInfo": [
-                    {
-                        "Bitrate": 2114595,
-                        "CodecType": "h264",
-                        "GearName": "normal_720_0",
-                        "PlayAddr": {
-                            "DataSize": 3541155,
-                            "FileCs": "c:0-15812-b84b",
-                            "FileHash": "4efa016d2213e0d2a94d37f9f21f9adb",
-                            "Uri": "v0f025gc0000cdeb5d3c77u931v3qvbg",
-                            "UrlKey": "v0f025gc0000cdeb5d3c77u931v3qvbg_h264_720p_2114595",
-                            "UrlList": [
-                                "https://v16-webapp.tiktok.com/29cab804f5e93ac94964d941c424a7f8/636bbbe1/video/tos/useast2a/tos-useast2a-pve-0037-aiso/8abe21a3ddfa49fba5f86bd9a4333f2d/?a=1988\u0026ch=0\u0026cr=0\u0026dr=0\u0026lr=tiktok\u0026cd=0%7C0%7C1%7C0\u0026cv=1\u0026br=4130\u0026bt=2065\u0026cs=0\u0026ds=3\u0026ft=_GC~MBMyq8Z48IYhe2NM4Qml7GbRyu8\u0026mime_type=video_mp4\u0026qs=0\u0026rc=ZGg1OTk1ODZmNzM7aGczO0Bpank2NDw6ZmdlZzMzZjgzM0AvLmNfYS4uNS8xNjFeNjUzYSNfbnMwcjQwMmJgLS1kL2Nzcw%3D%3D\u0026l=2022110908402001024501106913087F41\u0026btag=80000",
-                                "https://v16-webapp.tiktok.com/29cab804f5e93ac94964d941c424a7f8/636bbbe1/video/tos/useast2a/tos-useast2a-pve-0037-aiso/8abe21a3ddfa49fba5f86bd9a4333f2d/?a=1988\u0026ch=0\u0026cr=0\u0026dr=0\u0026lr=tiktok\u0026cd=0%7C0%7C1%7C0\u0026cv=1\u0026br=4130\u0026bt=2065\u0026cs=0\u0026ds=3\u0026ft=_GC~MBMyq8Z48IYhe2NM4Qml7GbRyu8\u0026mime_type=video_mp4\u0026qs=0\u0026rc=ZGg1OTk1ODZmNzM7aGczO0Bpank2NDw6ZmdlZzMzZjgzM0AvLmNfYS4uNS8xNjFeNjUzYSNfbnMwcjQwMmJgLS1kL2Nzcw%3D%3D\u0026l=2022110908402001024501106913087F41\u0026btag=80000"
-                            ]
-                        },
-                        "QualityType": 10
-                    }
-                ],
-                "codecType": "h264",
-                "cover": "https://p16-sign-va.tiktokcdn.com/obj/tos-useast2a-p-0037-aiso/ae70d8dfc60f46569bc5998fa39af12c_1667019453?x-expires=1668002400\u0026x-signature=vrflkJIhB8%2B%2BMDz6ZSuGRoPlMv8%3D",
-                "definition": "720p",
-                "downloadAddr": "https://v16-webapp.tiktok.com/29cab804f5e93ac94964d941c424a7f8/636bbbe1/video/tos/useast2a/tos-useast2a-pve-0037-aiso/8abe21a3ddfa49fba5f86bd9a4333f2d/?a=1988\u0026ch=0\u0026cr=0\u0026dr=0\u0026lr=tiktok\u0026cd=0%7C0%7C1%7C0\u0026cv=1\u0026br=4130\u0026bt=2065\u0026cs=0\u0026ds=3\u0026ft=_GC~MBMyq8Z48IYhe2NM4Qml7GbRyu8\u0026mime_type=video_mp4\u0026qs=0\u0026rc=ZGg1OTk1ODZmNzM7aGczO0Bpank2NDw6ZmdlZzMzZjgzM0AvLmNfYS4uNS8xNjFeNjUzYSNfbnMwcjQwMmJgLS1kL2Nzcw%3D%3D\u0026l=2022110908402001024501106913087F41\u0026btag=80000",
-                "duration": 13,
-                "dynamicCover": "https://p16-sign-va.tiktokcdn.com/obj/tos-useast2a-p-0037-aiso/08b2dcf65f384c109d1d4832496b8387_1667019454?x-expires=1668002400\u0026x-signature=0aDaYsei2vg5vkC72Pc%2BpxUxqTI%3D",
-                "encodeUserTag": "",
-                "encodedType": "normal",
-                "format": "mp4",
-                "height": 1024,
-                "id": "7159794001544056091",
-                "originCover": "https://p16-sign-va.tiktokcdn.com/obj/tos-useast2a-p-0037-aiso/a59da7f54581411b86682a9396bcba1a_1667019454?x-expires=1668002400\u0026x-signature=iDGu1u4bNIJdSmM4WrwOWPem9gI%3D",
-                "playAddr": "https://v16-webapp.tiktok.com/29cab804f5e93ac94964d941c424a7f8/636bbbe1/video/tos/useast2a/tos-useast2a-pve-0037-aiso/8abe21a3ddfa49fba5f86bd9a4333f2d/?a=1988\u0026ch=0\u0026cr=0\u0026dr=0\u0026lr=tiktok\u0026cd=0%7C0%7C1%7C0\u0026cv=1\u0026br=4130\u0026bt=2065\u0026cs=0\u0026ds=3\u0026ft=_GC~MBMyq8Z48IYhe2NM4Qml7GbRyu8\u0026mime_type=video_mp4\u0026qs=0\u0026rc=ZGg1OTk1ODZmNzM7aGczO0Bpank2NDw6ZmdlZzMzZjgzM0AvLmNfYS4uNS8xNjFeNjUzYSNfbnMwcjQwMmJgLS1kL2Nzcw%3D%3D\u0026l=2022110908402001024501106913087F41\u0026btag=80000",
-                "ratio": "720p",
-                "reflowCover": "https://p16-sign-va.tiktokcdn.com/obj/tos-useast2a-p-0037-aiso/ae70d8dfc60f46569bc5998fa39af12c_1667019453?x-expires=1668002400\u0026x-signature=vrflkJIhB8%2B%2BMDz6ZSuGRoPlMv8%3D",
-                "shareCover": [
-                    "",
-                    "https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/a59da7f54581411b86682a9396bcba1a_1667019454~tplv-tiktok-play.jpeg?x-expires=1668585600\u0026x-signature=CeKvSh5GGRpNGgqDTmE%2BJbWJfeE%3D",
-                    "https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/a59da7f54581411b86682a9396bcba1a_1667019454~tplv-tiktokx-share-play.jpeg?x-expires=1668585600\u0026x-signature=dS0NGuYjX8fEOAT4HSpQeozDk8Q%3D"
-                ],
-                "videoQuality": "normal",
-                "volumeInfo": {
-                    "Loudness": -6,
-                    "Peak": 1
-                },
-                "width": 576,
-                "zoomCover": {
-                    "240": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/ae70d8dfc60f46569bc5998fa39af12c_1667019453~tplv-f5insbecw7-1:240:240.jpeg?x-expires=1668002400\u0026x-signature=EVjMUtTuppzMpUuHlIGxqnEF4Mc%3D",
-                    "480": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/ae70d8dfc60f46569bc5998fa39af12c_1667019453~tplv-f5insbecw7-1:480:480.jpeg?x-expires=1668002400\u0026x-signature=JmWRsmTOa6sQ5LD4KzqwpBRrzWA%3D",
-                    "720": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/ae70d8dfc60f46569bc5998fa39af12c_1667019453~tplv-f5insbecw7-1:720:720.jpeg?x-expires=1668002400\u0026x-signature=lInygn6YeQvkUIXMAMz6ovqZZjk%3D",
-                    "960": "https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/ae70d8dfc60f46569bc5998fa39af12c_1667019453~tplv-f5insbecw7-1:960:960.jpeg?x-expires=1668002400\u0026x-signature=jTrqem%2FxgJYaalwkeeIK%2FIQQftU%3D"
-                }
-            },
-            "vl1": false
-        },
-    ],
-    "log_pb": {
-        "impr_id": "2022110908402001024501106913087F41"
-    },
-    "statusCode": 0,
-    "status_code": 0
-}
+
+## Develop
+
+### Dev env setup
+
+```
+git clone https://github.com/ericlingit/tiktok-trending.git
+cd tiktok-trending
+python3 -m venv venv
+source venv/bin/activate
+pip install -U pip wheel
+pip install -r requirements.txt
+pip install -e .
+pytest
 ```

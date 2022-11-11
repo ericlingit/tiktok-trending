@@ -5,3 +5,6 @@ types-requests
 
 # Dependencies.
 requests
+
+# Build dist.
+build

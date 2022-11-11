@@ -124,7 +124,7 @@ def get_new_posts() -> dict:
     return resp.json()
 
 
-def parse_post(item: dict) -> Tik:
+def parse_item(item: dict) -> Tik:
     """Parse one `item` and return a Tik object."""
     # Author stats.
     ax = item.get("authorStats", {})
@@ -193,7 +193,7 @@ if __name__ == "__main__":
         data: dict = json.load(fh)
 
     item = data.get("itemList", [{}])[0]
-    tik = parse_post(item)
+    tik = parse_item(item)
 
     download_video(
         tik=tik,

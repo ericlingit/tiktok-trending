@@ -1,6 +1,6 @@
-# Tiktok scraper
+# Tiktok trending videos scraper
 
-Scrape tiktok front page videos URLs.
+Scrape trending video URLs from Tiktok front page, with option to download them.
 
 ## Website structure
 

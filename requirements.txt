@@ -6,8 +6,9 @@ types-requests
 # Dependencies.
 requests
 
-# Build dist.
+# Packaging and dist.
 build
+twine
 
 # Testing.
 pytest

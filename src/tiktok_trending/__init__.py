@@ -119,7 +119,7 @@ request_params = {
 
 
 def get_new_posts() -> dict:
-    """Get a list of new posts from Tiktok."""
+    """Call Tiktok's content API, and return the raw JSON response."""
     resp = requests.get(request_url, request_params)
     resp.raise_for_status()
     return resp.json()
@@ -169,6 +169,7 @@ def parse_item(item: dict) -> Tik:
 
 
 def parse_response(response_json: dict) -> List[Tik]:
+    """Parse raw JSON response returned by Tiktok's content API."""
     items = response_json.get("itemList", {})
     return [parse_item(item) for item in items]
 

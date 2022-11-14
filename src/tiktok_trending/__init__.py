@@ -151,9 +151,10 @@ def parse_item(item: dict) -> Tik:
     v = item.get("video", {})
     v.pop("bitrateInfo")
     v.pop("shareCover")
-    v.pop("subtitleInfos")
     v.pop("volumeInfo")
     v.pop("zoomCover")
+    if "subtitleInfos" in v:
+        v.pop("subtitleInfos")
     video = Video(**v)
 
     return Tik(

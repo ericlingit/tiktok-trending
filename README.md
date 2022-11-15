@@ -34,13 +34,15 @@ Note that all content URLs (images and videos) in the response have a limited li
 
 ## tiktok-trending usage guide
 
+### As a library
+
 Install
 
 ```
 pip install tiktok-trending
 ```
 
-Scrape and download
+Download
 
 ```python
 from pathlib import Path
@@ -59,6 +61,37 @@ for p in posts:
         save_metadata=True,
     )
 ```
+
+### As a command line tool
+
+Install
+
+```
+pip install tiktok-trending
+```
+
+Usage
+
+```
+python -m tiktok_trending --help
+
+    usage: tiktok_trending [-h] [-d DIR] [-m] [-s]
+
+    Download Tiktok trending videos.
+
+    optional arguments:
+    -h, --help           show this help message and exit
+    -d DIR, --dir DIR    the output directory. Defaults to the current working directory
+    -m, --metadata       whether to save video metadata as JSON files
+    -s, --skip-download  don't download video; dump the raw JSON response from Tiktok
+
+python -m tiktok_trending
+```
+
+tiktok_trending will save each video with the following filename format:
+
+- `tiktok_<user ID>_<video ID>.mp4`
+- Example: `tiktok_7077268233275851803_7162176114159340827.mp4`
 
 ## Develop
 

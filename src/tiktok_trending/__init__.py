@@ -185,11 +185,10 @@ def download_video(tik: Tik, out_dir: Path, filename: str, save_metadata: bool) 
     resp = requests.get(tik.video.downloadAddr, request_params, stream=True)
     resp.raise_for_status()
 
-    fname = f"{filename}.{tik.video.format}"
-    with (out_dir / fname).open("wb") as fh:
+    with (out_dir / f"{filename}.{tik.video.format}").open("wb") as fh:
         for chunk in resp.iter_content(2**14):  # Read 16 KibiBytes at a time.
             fh.write(chunk)
 
     if save_metadata:
-        with (out_dir / (filename + ".json")).open("w") as fh:
+        with (out_dir / f"{filename}.json").open("w") as fh:
             json.dump(asdict(tik), fh, ensure_ascii=False, indent=4)

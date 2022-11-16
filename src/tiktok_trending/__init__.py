@@ -57,6 +57,14 @@ class Music:
 
 
 @dataclass
+class Stats:
+    commentCount: int
+    diggCount: int
+    playCount: int
+    shareCount: int
+
+
+@dataclass
 class Video:
     bitrate: int
     codecType: str
@@ -76,14 +84,6 @@ class Video:
     reflowCover: str
     videoQuality: str
     width: int
-
-
-@dataclass
-class Stats:
-    commentCount: int
-    diggCount: int
-    playCount: int
-    shareCount: int
 
 
 @dataclass
@@ -129,48 +129,101 @@ def parse_item(item: dict) -> Tik:
     """Parse one `item` and return a Tik object."""
     # Author stats.
     ax = item.get("authorStats", {})
-    author_stats = AuthorStats(**ax)
+    author_stats = AuthorStats(
+        diggCount=ax.get("diggCount", 0),
+        followerCount=ax.get("followerCount", 0),
+        followingCount=ax.get("followingCount", 0),
+        heart=ax.get("heart", 0),
+        heartCount=ax.get("heartCount", 0),
+        videoCount=ax.get("videoCount", 0),
+    )
 
     # Author.
     a = item.get("author", {})
     if "roomId" in a:
         a.pop("roomId")
     author = Author(
-        **a, url=f"https://www.tiktok.com/@{a.get('id', '')}", stats=author_stats
+        avatarLarger=a.get("avatarLarger", ""),
+        avatarMedium=a.get("avatarMedium", ""),
+        avatarThumb=a.get("avatarThumb", ""),
+        commentSetting=a.get("commentSetting", 0),
+        downloadSetting=a.get("downloadSetting", 0),
+        duetSetting=a.get("duetSetting", 0),
+        ftc=a.get("ftc", False),
+        id=a.get("id", ""),
+        isADVirtual=a.get("isADVirtual", ""),
+        nickname=a.get("nickname", ""),
+        openFavorite=a.get("openFavorite", False),
+        privateAccount=a.get("privateAccount", False),
+        relation=a.get("relation", 0),
+        secUid=a.get("secUid", ""),
+        secret=a.get("secret", False),
+        signature=a.get("signature", ""),
+        stats=author_stats,
+        stitchSetting=a.get("stitchSetting", 0),
+        ttSeller=a.get("ttSeller", False),
+        uniqueId=a.get("uniqueId", ""),
+        url=f"https://www.tiktok.com/@{a.get('uniqueId', '')}",
+        verified=a.get("verified", False),
     )
 
     # Music.
     mu = item.get("music", {})
-    music = Music(**mu)
+    music = Music(
+        album=mu.get("album", ""),
+        authorName=mu.get("authorName", ""),
+        coverLarge=mu.get("coverLarge", ""),
+        coverMedium=mu.get("coverMedium", ""),
+        coverThumb=mu.get("coverThumb", ""),
+        duration=mu.get("duration", 0),
+        id=mu.get("id", ""),
+        original=mu.get("original", False),
+        playUrl=mu.get("playUrl", ""),
+        title=mu.get("title", ""),
+    )
 
     # Stats.
     st = item.get("stats", {})
-    stats = Stats(**st)
+    stats = Stats(
+        commentCount=st.get("commentCount", 0),
+        diggCount=st.get("diggCount", 0),
+        playCount=st.get("playCount", 0),
+        shareCount=st.get("shareCount", 0),
+    )
 
     # Video.
     v = item.get("video", {})
-    if "bitrateInfo" in v:
-        v.pop("bitrateInfo")
-    if "shareCover" in v:
-        v.pop("shareCover")
-    if "volumeInfo" in v:
-        v.pop("volumeInfo")
-    if "zoomCover" in v:
-        v.pop("zoomCover")
-    if "subtitleInfos" in v:
-        v.pop("subtitleInfos")
-    video = Video(**v)
+    video = Video(
+        bitrate=v.get("bitrate", 0),
+        codecType=v.get("codecType", ""),
+        cover=v.get("cover", ""),
+        definition=v.get("definition", ""),
+        downloadAddr=v.get("downloadAddr", ""),
+        duration=v.get("duration", 0),
+        dynamicCover=v.get("dynamicCover", ""),
+        encodeUserTag=v.get("encodeUserTag", ""),
+        encodedType=v.get("encodedType", ""),
+        format=v.get("format", ""),
+        height=v.get("height", 0),
+        id=v.get("id", ""),
+        originCover=v.get("originCover", ""),
+        playAddr=v.get("playAddr", ""),
+        ratio=v.get("ratio", ""),
+        reflowCover=v.get("reflowCover", ""),
+        videoQuality=v.get("videoQuality", ""),
+        width=v.get("width", 0),
+    )
 
     return Tik(
         author=author,
-        createTime=item.get("createTime", -1),
+        createTime=item.get("createTime", 0),
         desc=item.get("desc", ""),
         id=item.get("id", ""),
         isAd=item.get("isAd", False),
         music=music,
         stats=stats,
         video=video,
-        url=f"https://www.tiktok.com/@{author.id}/video/{video.id}",
+        url=f"https://www.tiktok.com/@{author.uniqueId}/video/{video.id}",
     )
 
 

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tiktok_trending"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
   { name="Eric Lin", email="ericlingit@users.noreply.github.com" },
 ]

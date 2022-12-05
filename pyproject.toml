@@ -18,6 +18,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
+  "brotli",
   "requests",
 ]
 
